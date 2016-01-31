@@ -1,4 +1,3 @@
-require('../../support');
 var E = require('./functor_exercises');
 var assert = require("chai").assert;
 

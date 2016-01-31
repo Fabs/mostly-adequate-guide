@@ -48,7 +48,7 @@ var ex4 = _.compose(_.map(parseInt), Maybe.of);
 var getPost = function (i) {
   return new Task(function(rej, res) {
     setTimeout(function(){
-      res({id: i, title: 'Love them futures'})  
+      res({id: i, title: 'Love them futures'})
     }, 300)
   });
 };

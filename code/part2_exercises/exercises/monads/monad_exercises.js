@@ -2,10 +2,6 @@ require('../../support');
 var Task = require('data.task');
 var _ = require('ramda');
 
-// Exercise 1
-// ==========
-// Use safeProp and map/join or chain to safely get the street name when given a user
-
 var safeProp = _.curry(function (x, o) { return Maybe.of(o[x]); });
 var user = {
   id: 2,
@@ -18,13 +14,6 @@ var user = {
   }
 };
 
-var ex1 = undefined;
-
-
-// Exercise 2
-// ==========
-// Use getFile to get the filename, remove the directory so it's just the file, then purely log it.
-
 var getFile = function() {
   return new IO(function(){ return __filename; });
 }
@@ -36,14 +25,12 @@ var pureLog = function(x) {
   });
 }
 
-var ex2 = undefined;
-
-
+var ex1 = _.compose(chain(safeProp('name')), chain(safeProp('street')), safeProp('address'));
+var ex2 = _.compose(chain(_.compose(pureLog, _.last, split('/'))),getFile);
 
 // Exercise 3
 // ==========
 // Use getPost() then pass the post's id to getComments().
-
 var getPost = function(i) {
   return new Task(function (rej, res) {
     setTimeout(function () {
@@ -60,14 +47,12 @@ var getComments = function(i) {
   });
 }
 
-var ex3 = undefined;
-
+var ex3 = _.compose(chain(_.compose(getComments, _.prop('id'))), getPost);
 
 // Exercise 4
 // ==========
 // Use validateEmail, addToMailingList and emailBlast to implement ex4's type signature.
 // It should safely add a new subscriber to the list, then email everyone with this happy news.
-
 //  addToMailingList :: Email -> IO [Email]
 var addToMailingList = (function(list){
   return function(email) {
@@ -91,7 +76,6 @@ var validateEmail = function(x){
 }
 
 //  ex4 :: Email -> Either String (IO String)
-var ex4 = undefined;
-
+var ex4 = _.compose(_.map(_.compose(chain(emailBlast),addToMailingList)),validateEmail)
 
 module.exports = {ex1: ex1, ex2: ex2, ex3: ex3, ex4: ex4, user: user}
