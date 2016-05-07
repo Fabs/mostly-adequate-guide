@@ -29,7 +29,7 @@ Here we've made a function `add` that takes one argument and returns a function.
 Let's set up a few curried functions for our enjoyment.
 
 ```js
-var curry = require('lodash.curry');
+var curry = require('lodash/curry');
 
 var match = curry(function(what, str) {
   return str.match(what);
@@ -51,37 +51,37 @@ var map = curry(function(f, ary) {
 The pattern I've followed is a simple, but important one. I've strategically positioned the data we're operating on (String, Array) as the last argument. It will become clear as to why upon use.
 
 ```js
-match(/\s+/g, "hello world");
+match(/\s+/g, 'hello world');
 // [ ' ' ]
 
-match(/\s+/g)("hello world");
+match(/\s+/g)('hello world');
 // [ ' ' ]
 
 var hasSpaces = match(/\s+/g);
 // function(x) { return x.match(/\s+/g) }
 
-hasSpaces("hello world");
+hasSpaces('hello world');
 // [ ' ' ]
 
-hasSpaces("spaceless");
+hasSpaces('spaceless');
 // null
 
-filter(hasSpaces, ["tori_spelling", "tori amos"]);
-// ["tori amos"]
+filter(hasSpaces, ['tori_spelling', 'tori amos']);
+// ['tori amos']
 
 var findSpaces = filter(hasSpaces);
 // function(xs) { return xs.filter(function(x) { return x.match(/\s+/g) }) }
 
-findSpaces(["tori_spelling", "tori amos"]);
-// ["tori amos"]
+findSpaces(['tori_spelling', 'tori amos']);
+// ['tori amos']
 
-var noVowels = replace(/[aeiou]/ig);
-// function(replacement, x) { return x.replace(/[aeiou]/ig, replacement) }
+var noVowels = replace(/[aeiouy]/ig);
+// function(replacement, x) { return x.replace(/[aeiouy]/ig, replacement) }
 
 var censored = noVowels("*");
-// function(x) { return x.replace(/[aeiou]/ig, "*") }
+// function(x) { return x.replace(/[aeiouy]/ig, '*') }
 
-censored("Chocolate Rain");
+censored('Chocolate Rain');
 // 'Ch*c*l*t* R**n'
 ```
 
@@ -130,14 +130,11 @@ Let's acquire another essential tool called `compose`.
 
 ## Exercises
 
-A quick word before we start. We'll use a library called *ramda* which curries every function by default. Alternatively you may choose to use *lodash-fp* which does the same and is written/maintained by the creator of lodash. Both will work just fine and it is a matter of preference.
-
-[ramda](http://ramdajs.com)
-[lodash-fp](https://github.com/lodash/lodash-fp)
+A quick word before we start. We'll use a library called [Ramda](http://ramdajs.com) which curries every function by default. Alternatively you may choose to use [lodash/fp](https://github.com/lodash/lodash/wiki/FP-Guide) which does the same and is written/maintained by the creator of lodash. Both will work just fine and it is a matter of preference.
 
 There are [unit tests](https://github.com/DrBoolean/mostly-adequate-guide/tree/master/code/part1_exercises) to run against your exercises as you code them, or you can just copy-paste into a javascript REPL for the early exercises if you wish.
 
-Answers are provided with the code in the [repository for this book](https://github.com/DrBoolean/mostly-adequate-guide/tree/master/code/part1_exercises/answers)
+Answers are provided with the code in the [repository for this book](https://github.com/DrBoolean/mostly-adequate-guide/tree/master/code/part1_exercises/answers). Best way to do the exercises is with an [immediate feedback loop](feedback_loop.md).
 
 ```js
 var _ = require('ramda');
@@ -163,7 +160,9 @@ var sentences = undefined;
 // Refactor to remove all arguments by partially applying the functions.
 
 var filterQs = function(xs) {
-  return _.filter(function(x){ return match(/q/i, x);  }, xs);
+  return _.filter(function(x) {
+    return match(/q/i, x);
+  }, xs);
 };
 
 
@@ -173,11 +172,13 @@ var filterQs = function(xs) {
 // arguments.
 
 // LEAVE BE:
-var _keepHighest = function(x,y){ return x >= y ? x : y; };
+var _keepHighest = function(x, y) {
+  return x >= y ? x : y;
+};
 
 // REFACTOR THIS ONE:
 var max = function(xs) {
-  return _.reduce(function(acc, x){
+  return _.reduce(function(acc, x) {
     return _keepHighest(acc, x);
   }, -Infinity, xs);
 };
@@ -186,7 +187,7 @@ var max = function(xs) {
 // Bonus 1:
 // ============
 // Wrap array's slice to be functional and curried.
-// //[1,2,3].slice(0, 2)
+// //[1, 2, 3].slice(0, 2)
 var slice = undefined;
 
 

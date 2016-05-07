@@ -16,14 +16,14 @@ This is a book on the functional paradigm in general. We'll use the world's most
 
  * **The language is fully capable of writing top notch functional code.**
 
-    We have all the features we need to mimic a language like Scala or Haskell with the help of a tiny library or two. Object-oriented programming currently dominates the industry, but it's clearly awkward in JavaScript. It's akin to camping off of a highway or tap dancing in galoshes. We have to `bind` all over the place lest `this` change out from under us, we don't have classes(Yet), we have various work arounds for the quirky behavior when the `new` keyword is forgotten, private members are only available via closures. To a lot of us, FP feels more natural anyways.
+    We have all the features we need to mimic a language like Scala or Haskell with the help of a tiny library or two. Object-oriented programming currently dominates the industry, but it's clearly awkward in JavaScript. It's akin to camping off of a highway or tap dancing in galoshes. We have to `bind` all over the place lest `this` change out from under us, we don't have classes (yet), we have various work arounds for the quirky behavior when the `new` keyword is forgotten, private members are only available via closures. To a lot of us, FP feels more natural anyways.
 
 That said, typed functional languages will, without a doubt, be the best place to code in the style presented by this book. JavaScript will be our means of learning a paradigm, where you apply it is up to you. Luckily, the interfaces are mathematical and, as such, ubiquitous. You'll find yourself at home with swiftz, scalaz, haskell, purescript, and other mathematically inclined environments.
 
 
 ### Gitbook (for a better reading experience)
 
-* [Read it online](http://drboolean.gitbooks.io/mostly-adequate-guide/)
+* [Read it online](https://drboolean.gitbooks.io/mostly-adequate-guide/content/)
 * [Download EPUB](https://www.gitbook.com/download/epub/book/drboolean/mostly-adequate-guide)
 * [Download Mobi (Kindle)](https://www.gitbook.com/download/mobi/book/drboolean/mostly-adequate-guide)
 
@@ -54,6 +54,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 ### Translations
 
 See [TRANSLATIONS.md](TRANSLATIONS.md)
+
+### FAQ
+
+See [FAQ.md](FAQ.md)
+
 
 
 # Plans for the future
